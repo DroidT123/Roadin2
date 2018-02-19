@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.roadin.StartFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/starter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="31dp"
+            android:lineSpacingExtra="8sp"
+            android:text="Just A Demo"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="?android:attr/colorActivatedHighlight"
+            android:textSize="30sp"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:onClick="start"
+            android:text="START"
+            android:textSize="14sp"
+            android:typeface="normal" />
+    </RelativeLayout>
+
+
+</FrameLayout>

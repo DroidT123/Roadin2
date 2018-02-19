@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "263771171661",
+    "firebase_url": "https://roadin2-fdf9a.firebaseio.com",
+    "project_id": "roadin2-fdf9a",
+    "storage_bucket": "roadin2-fdf9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263771171661:android:596fc2c54f5eea69",
+        "android_client_info": {
+          "package_name": "com.example.roadin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263771171661-56do17muub15etso2tfnfnd8in7ugcrg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.roadin",
+            "certificate_hash": "4bc272343191477a2c5a089ef9357aff9afe73c3"
+          }
+        },
+        {
+          "client_id": "263771171661-rkuuud8c8vdj7d004k8nra5biudp57qu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm3eYSq9ZX5XFHO-YkPKutGAFHdDPJ_8g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263771171661-rkuuud8c8vdj7d004k8nra5biudp57qu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
