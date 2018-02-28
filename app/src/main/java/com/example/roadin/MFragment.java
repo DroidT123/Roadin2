@@ -15,6 +15,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -179,6 +183,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
     }
 
                      // <<<<<<<<<<<<<<<<<<<<TEST >>>>>>>>>>>>>>>>>>
+
     public void geoFireExample()
     {
         double lat = mCurrentLocation.getLatitude();
@@ -195,25 +200,28 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
 
     */
 
+         final Snackbar snackbar1 = Snackbar
+                .make(getView().findViewById(R.id.mapfrag), "Demo Location Entered.", Snackbar.LENGTH_LONG);
+
+
         LatLng myLoc = new LatLng(lat,lng);
         GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(myLoc.latitude,myLoc.longitude),0.01f);
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
-                Snackbar snackbar1 = Snackbar
-                        .make(getView().findViewById(R.id.mapfrag), "Demo Location Entered.", Snackbar.LENGTH_LONG);
 
-                snackbar1.show();
+                //snackbar1.show();
+                showAlert();
                 Log.i("INSIDEEEEEE","WORKING");
 
             }
 
             @Override
             public void onKeyExited(String key) {
-                Snackbar snackbar1 = Snackbar
+                Snackbar snackbar2 = Snackbar
                         .make(getView().findViewById(R.id.mapfrag), "Demo Location Exited.", Snackbar.LENGTH_LONG);
 
-                snackbar1.show();
+                snackbar2.show();
                 Log.i("OUTSIDE","WORKING");
             }
 
@@ -238,6 +246,37 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
 
     }
                                  // <<<<<<<<<<<<<<<<<<<<TEST >>>>>>>>>>>>>>>>>>
+
+    // ----------------ALERT BUILDER -----------------------------//
+    public void showAlert() {
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.custom_layout,null);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+
+        builder.setView(view);
+
+        builder.setTitle("ALERT");
+        builder.setIcon(R.mipmap.ic_launcher);
+        final AlertDialog dialog= builder.create();
+        // builder.show();
+        dialog.show();
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                dialog.dismiss();
+                timer.cancel(); //this will cancel the timer of the system
+            }
+        }, 5000); // the timer will count 5 seconds....
+
+    }
+
+
+    // ----------------ALERT BUILDER -----------------------------//
+
+
 
 
 
