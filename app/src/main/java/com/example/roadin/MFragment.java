@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
@@ -68,6 +69,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
 
     //GoogleMap map;
     private static final String TAG = "DDDDDDDDDDDDDDDDD";
+    private String sign = "";
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
     //   private LocationRequest mLocationRequest;
@@ -179,6 +181,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
         ref = FirebaseDatabase.getInstance().getReference("Markers");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Demo");
         geoFire = new GeoFire(ref);
+        TextView msgView = (TextView)view.findViewById(R.id.tbox);
                              // <<<<<<<<<<<<<<<<<<<<TEST >>>>>>>>>>>>>>>>>>
     }
 
@@ -252,6 +255,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
 
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.custom_layout,null);
+        TextView msgView = (TextView)view.findViewById(R.id.tbox);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
@@ -259,6 +263,8 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
         builder.setView(view);
 
         builder.setTitle("ALERT");
+       // builder.setMessage(sign);
+        msgView.setText(sign);
         builder.setIcon(R.mipmap.ic_launcher);
         final AlertDialog dialog= builder.create();
         // builder.show();
@@ -346,6 +352,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
                     String key = ds.child("key").getValue(String.class);
                     Double lat = ds.child("lat").getValue(Double.TYPE);
                     Double lng = ds.child("lon").getValue(Double.TYPE);
+                    sign = ds.child("sign").getValue(String.class);
                  //   String str = key+""+lat+" "+lng+"";
                   //  Log.d("TAG", key + "  " + lat + "" +lng);
                     LatLng marker = new LatLng(lat,lng);

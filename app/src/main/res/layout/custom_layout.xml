@@ -6,17 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_menu_camera"/>
-
     <TextView
+        android:id="@+id/tbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SCHOOL AHEAD"
+        android:text=""
         android:layout_margin="100dp"
         android:textSize="24dp"
+        android:textColor="#ff0000"
         android:padding="24dp"/>
 
 </android.support.constraint.ConstraintLayout>
