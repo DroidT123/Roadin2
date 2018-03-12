@@ -183,11 +183,13 @@ public class CameraFragment extends Fragment implements  LocationListener {
      */
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+
 
         // save file url in bundle as it will be null on scren orientation
         // changes
         outState.putParcelable("file_uri", fileUri);
+        Log.i("FILEURI:", String.valueOf(fileUri));
+        super.onSaveInstanceState(outState);
     }
 
     @Override
