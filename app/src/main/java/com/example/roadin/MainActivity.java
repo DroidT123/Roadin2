@@ -96,9 +96,6 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.mainLayout,adFragment).commit();
 
         } else if (id == R.id.nav_slideshow) {
-            SignInFragment signInFragment = new SignInFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.mainLayout,signInFragment).commit();
 
 
 
