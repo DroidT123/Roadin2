@@ -82,9 +82,10 @@ public class SignInFragment extends Fragment {
                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
-                DatabaseReference ref= database.getReference("users");
 
-                ref.setValue(uid);
+                DatabaseReference ref= database.getReference("users");
+                String pid = ref.push().getKey();
+                ref.child(pid).setValue(uid);
                 startActivity(new Intent(this.getActivity(), MainActivity.class));
 
                 // ...
