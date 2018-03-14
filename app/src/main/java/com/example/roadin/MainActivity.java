@@ -1,5 +1,6 @@
 package com.example.roadin;
 
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -100,6 +101,9 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.mainLayout,signInFragment).commit();
 
         } else if (id == R.id.nav_manage) {
+            CameraFragment cameraFragment = new CameraFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.mainLayout,cameraFragment).commit();
 
         } else if (id == R.id.nav_share) {
 
