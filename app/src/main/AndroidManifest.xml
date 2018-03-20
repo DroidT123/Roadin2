@@ -45,11 +45,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-<<<<<<< HEAD
-        <activity android:name=".alert"></activity>
-=======
+
         <activity android:name=".alert" />
->>>>>>> 443e71d16e390d87cd7aea370c29960f1aab58ff
         <activity android:name=".camActivity"></activity>
     </application>
 
