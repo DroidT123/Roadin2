@@ -42,7 +42,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".alert" />
-        <activity android:name=".camActivity"></activity>
+        <activity android:name=".camActivity" />
+        <activity android:name=".uploadActivity"></activity>
     </application>
 
 </manifest>
