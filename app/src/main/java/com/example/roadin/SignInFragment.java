@@ -87,6 +87,7 @@ public class SignInFragment extends Fragment {
                 String pid = ref.push().getKey();
                 ref.child(pid).setValue(uid);
                 startActivity(new Intent(this.getActivity(), MainActivity.class));
+                Toast.makeText(this.getActivity(),"Signed in",Toast.LENGTH_SHORT).show();
 
                 // ...
             } else {

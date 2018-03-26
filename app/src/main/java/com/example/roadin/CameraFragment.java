@@ -20,6 +20,7 @@ import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -52,7 +56,7 @@ public class CameraFragment extends Fragment   {
     //View view;
     View view;
     Button firstButton;
-
+    Button secondbutton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,18 +68,36 @@ public class CameraFragment extends Fragment   {
        /* @Override
         public void onViewCreated (View view, @Nullable Bundle savedInstanceState){
             super.onViewCreated(view, savedInstanceState);*/
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            firstButton = (Button) view.findViewById(R.id.firstButton);
+            firstButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        firstButton = (Button) view.findViewById(R.id.firstButton);
-        firstButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), camActivity.class);
+                    getActivity().startActivity(intent);
 
-                Intent intent = new Intent(getActivity(), camActivity.class);
-                getActivity().startActivity(intent);
+                }
+            });
+        }
+         else
+            {
+                secondbutton = (Button) view.findViewById(R.id.secondbutton);
+                secondbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                        Fragment fragment = new SignInFragment();
+
+                        FragmentManager fragmentManager = getFragmentManager();
+
+                        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                    }
+                });
             }
-        });
-        return view;
+            return view;
+        }
+
     }
 
-}
