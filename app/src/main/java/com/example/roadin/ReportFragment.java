@@ -1,9 +1,10 @@
 package com.example.roadin;
 
-
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+
+
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +20,18 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.text.TextUtils;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import java.util.Locale;
 
@@ -48,7 +61,12 @@ public class ReportFragment extends Fragment {
     private String mLatitudeLabel = "LAT";
     private String mLongitudeLabel = "LNG";
 
-
+    Button submit;
+    EditText desc1,desc2;
+    FirebaseDatabase mdatabase;
+    DatabaseReference ref;
+    //details details;
+    String pid;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,6 +88,43 @@ public class ReportFragment extends Fragment {
 
         mLatitudeText = (TextView) view.findViewById((R.id.latitude_text));
         mLongitudeText = (TextView) view.findViewById((R.id.longitude_text));
+        submit=(Button) view.findViewById(R.id.button4) ;
+        desc1=(EditText) view.findViewById(R.id.desc1) ;
+        desc2=(EditText) view.findViewById(R.id.desc2) ;
+        mdatabase = FirebaseDatabase.getInstance();
+        ref = mdatabase.getReference("details");
+        //details = new details();
+
+        submit.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                getValues();
+                //Intent myIntent = new Intent(MainActivity.this,
+                //  NewActivity.class);
+                //startActivity(myIntent);
+            }
+        });
+
+    }
+
+    private void getValues()
+    {
+        String d1 = desc1.getText().toString().trim();
+        String d2 = desc2.getText().toString().trim();
+        //Toast.makeText(this,Date.toString(), Toast.LENGTH_SHORT).show();
+        if (!TextUtils.isEmpty((CharSequence) desc1)||(!TextUtils.isEmpty((CharSequence) desc2))) {
+
+            pid = ref.push().getKey();
+
+            Map details = new HashMap();
+            details.put("place",d1);
+            details.put("desc",d2);
+            ref.child(pid).setValue(details);
+            Toast.makeText(this.getActivity(), "data uploaded", Toast.LENGTH_SHORT).show();
+            /* startActivity(new Intent(MainActivity.this,New_Activity.class)); */
+        } else {
+            Toast.makeText(this.getActivity(), "you should enter data in all fields", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
