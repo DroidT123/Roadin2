@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
@@ -20,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.geofire.GeoFire;
@@ -67,6 +69,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
     //GoogleMap map;
     private static final String TAG = "DDDDDDDDDDDDDDDDD";
     private String sign = "";
+    private String sval = "";
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
     //   private LocationRequest mLocationRequest;
@@ -260,6 +263,13 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
         builder.setView(view);
 
         builder.setTitle("ALERT");
+
+        String uri = "@drawable/img"+sval;  // where myresource (without the extension) is the file
+        int imageResource = getResources().getIdentifier(uri, null, getActivity().getPackageName());
+        ImageView imageSign = (ImageView) view.findViewById(R.id.imageView2);
+        Drawable res = getResources().getDrawable(imageResource);
+        imageSign.setImageDrawable(res);
+
        // builder.setMessage(sign);
         msgView.setText(sign);
         builder.setIcon(R.mipmap.ic_launcher);
@@ -272,7 +282,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
                 dialog.dismiss();
                 timer.cancel(); //this will cancel the timer of the system
             }
-        }, 5000); // the timer will count 5 seconds....
+        }, 10000); // the timer will count 10 seconds....
 
     }
 
@@ -350,6 +360,11 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
                     Double lat = ds.child("lat").getValue(Double.TYPE);
                     Double lng = ds.child("lon").getValue(Double.TYPE);
                     sign = ds.child("sign").getValue(String.class);
+                    sval = ds.child("sval").getValue(String.class);
+
+                   // Log.i(TAG,sval);
+
+
                  //   String str = key+""+lat+" "+lng+"";
                   //  Log.d("TAG", key + "  " + lat + "" +lng);
                     LatLng marker = new LatLng(lat,lng);
