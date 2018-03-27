@@ -110,12 +110,16 @@ public class ReportFragment extends Fragment {
     {
         String d1 = desc1.getText().toString().trim();
         String d2 = desc2.getText().toString().trim();
+        String l1=mLatitudeText.getText().toString().trim();
+        String l2=mLongitudeText.getText().toString().trim();
         //Toast.makeText(this,Date.toString(), Toast.LENGTH_SHORT).show();
         if (!TextUtils.isEmpty((CharSequence) desc1)||(!TextUtils.isEmpty((CharSequence) desc2))) {
 
             pid = ref.push().getKey();
 
             Map details = new HashMap();
+            details.put("lat",l1);
+            details.put("lon",l2);
             details.put("place",d1);
             details.put("desc",d2);
             ref.child(pid).setValue(details);
