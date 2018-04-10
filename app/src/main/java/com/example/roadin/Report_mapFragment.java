@@ -2,6 +2,7 @@ package com.example.roadin;
 
 
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,9 +22,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -51,6 +59,9 @@ public class Report_mapFragment extends Fragment implements OnMapReadyCallback{
     // The geographical location where the device is currently located. That is, the last-known
     // location retrieved by the Fused Location Provider.
     private Location mLastKnownLocation;
+    private DatabaseReference mDatabase;
+    Double lat = null;
+    Double lng = null;
 
 
 
@@ -72,6 +83,7 @@ public class Report_mapFragment extends Fragment implements OnMapReadyCallback{
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("details");
     }
 
     @Override
@@ -86,6 +98,43 @@ public class Report_mapFragment extends Fragment implements OnMapReadyCallback{
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String place = ds.child("place").getValue(String.class);
+                    lat = ds.child("lat").getValue(Double.TYPE);
+                    lng = ds.child("lon").getValue(Double.TYPE);
+                    String desc = ds.child("desc").getValue(String.class);
+                    Log.i("lat lan",lat+"" +lng);
+
+                    // Log.i(TAG,sval);
+
+
+                    //   String str = key+""+lat+" "+lng+"";
+                    //  Log.d("TAG", key + "  " + lat + "" +lng);
+
+                    LatLng marker = new LatLng(lat,lng);
+                    mMap.addMarker(new MarkerOptions()
+                            .position(marker)
+                            .title(place)
+                            .snippet(desc));
+                   /* mMap.addCircle(new CircleOptions()
+                            .center(marker)
+                            .radius(5)
+                            .strokeColor(Color.BLUE)
+                            .fillColor(0x220000FF)
+                            .strokeWidth(5.0f));*/
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mDatabase.addListenerForSingleValueEvent(eventListener);
+
 
     }
     /**

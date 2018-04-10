@@ -110,8 +110,10 @@ public class ReportFragment extends Fragment {
     {
         String d1 = desc1.getText().toString().trim();
         String d2 = desc2.getText().toString().trim();
-        String l1=mLatitudeText.getText().toString().trim();
-        String l2=mLongitudeText.getText().toString().trim();
+        String l1=mLatitudeText.getText().toString();
+        String l2=mLongitudeText.getText().toString();
+        Double d3 = Double.parseDouble(l1);
+        Double d4 = Double.parseDouble(l2);
         //Toast.makeText(getContext(),d1, Toast.LENGTH_SHORT).show();
         if (!(TextUtils.isEmpty(d1))||!(TextUtils.isEmpty(d2))) {
             mdatabase = FirebaseDatabase.getInstance();
@@ -119,8 +121,8 @@ public class ReportFragment extends Fragment {
             pid = ref.push().getKey();
            // Toast.makeText(getContext(), pid.toString(), Toast.LENGTH_SHORT).show();
             Map details = new HashMap();
-            details.put("lat",l1);
-            details.put("lon",l2);
+            details.put("lat",d3);
+            details.put("lon",d4);
             details.put("place",d1);
             details.put("desc",d2);
             ref.child(pid).setValue(details);
@@ -146,11 +148,9 @@ public class ReportFragment extends Fragment {
                     public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful()) {
                             mLastKnownLocation = task.getResult();
-                            mLatitudeText.setText(String.format(Locale.ENGLISH, "%s: %f",
-                                    mLatitudeLabel,
+                            mLatitudeText.setText(String.format(Locale.ENGLISH, "%f",
                                     mLastKnownLocation.getLatitude()));
-                            mLongitudeText.setText(String.format(Locale.ENGLISH, "%s: %f",
-                                    mLongitudeLabel,
+                            mLongitudeText.setText(String.format(Locale.ENGLISH, "%f",
                                     mLastKnownLocation.getLongitude()));
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
