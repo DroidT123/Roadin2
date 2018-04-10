@@ -91,6 +91,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
     /**
      * Provides access to the Location Settings API.
      */
+
     private SettingsClient mSettingsClient;
     /**
      * Stores parameters for requests to the FusedLocationProviderApi.

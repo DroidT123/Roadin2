@@ -112,11 +112,12 @@ public class ReportFragment extends Fragment {
         String d2 = desc2.getText().toString().trim();
         String l1=mLatitudeText.getText().toString().trim();
         String l2=mLongitudeText.getText().toString().trim();
-        //Toast.makeText(this,Date.toString(), Toast.LENGTH_SHORT).show();
-        if (!TextUtils.isEmpty((CharSequence) desc1)||(!TextUtils.isEmpty((CharSequence) desc2))) {
-
+        //Toast.makeText(getContext(),d1, Toast.LENGTH_SHORT).show();
+        if (!(TextUtils.isEmpty(d1))||!(TextUtils.isEmpty(d2))) {
+            mdatabase = FirebaseDatabase.getInstance();
+            ref = mdatabase.getReference("details");
             pid = ref.push().getKey();
-
+           // Toast.makeText(getContext(), pid.toString(), Toast.LENGTH_SHORT).show();
             Map details = new HashMap();
             details.put("lat",l1);
             details.put("lon",l2);
