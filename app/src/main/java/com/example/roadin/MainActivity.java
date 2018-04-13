@@ -103,9 +103,16 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.mainLayout,cameraFragment).commit();
 
         } else if (id == R.id.nav_share) {
+            //REport
+            ReportFragment reportFragment = new ReportFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.mainLayout,reportFragment).commit();
 
         } else if (id == R.id.nav_send) {
 
+            Report_mapFragment report_mapFragment = new Report_mapFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.mainLayout,report_mapFragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
