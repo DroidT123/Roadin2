@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.text.TextUtils;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -81,6 +84,7 @@ public class ReportFragment extends Fragment {
         // Construct a FusedLocationProviderClient.
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
         // Prompt the user for permission.
+        getin();
         getLocationPermission();
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
@@ -106,6 +110,18 @@ public class ReportFragment extends Fragment {
 
     }
 
+
+    private void getin()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Fragment fragment = new SignInFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+
+            fragmentManager.beginTransaction().replace(R.id.mainLayout, fragment).commit();
+        }
+    }
     private void getValues()
     {
         String d1 = desc1.getText().toString().trim();
