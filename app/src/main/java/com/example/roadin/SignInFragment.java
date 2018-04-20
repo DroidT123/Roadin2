@@ -87,12 +87,12 @@ public class SignInFragment extends Fragment {
                 String pid = ref.push().getKey();
                 ref.child(pid).setValue(uid);
                 startActivity(new Intent(this.getActivity(), MainActivity.class));
-                Toast.makeText(this.getActivity(),"Signed in",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getActivity(),"Successfully signed in",Toast.LENGTH_SHORT).show();
 
                 // ...
             } else {
                 // Sign in failed, check response for error code
-                Toast.makeText(this.getActivity(), "Not Success", Toast.LENGTH_LONG).show();
+                Toast.makeText(this.getActivity(), "Signin not successfull", Toast.LENGTH_LONG).show();
                 // ...
             }
         }

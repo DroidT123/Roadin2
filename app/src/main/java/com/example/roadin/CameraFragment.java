@@ -41,7 +41,7 @@ public class CameraFragment extends Fragment   {
             super.onViewCreated(view, savedInstanceState);*/
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            Toast.makeText(getContext(), "one", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getContext(), "one", Toast.LENGTH_SHORT).show();
            firstButton = (Button) view.findViewById(R.id.firstButton);
             firstButton.setOnClickListener(new View.OnClickListener() {
                 @Override

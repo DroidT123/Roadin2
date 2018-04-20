@@ -125,8 +125,8 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
 
 
     // Keys for storing activity state.
-    private static final String KEY_CAMERA_POSITION = "camera_position";
-    private static final String KEY_LOCATION = "location";
+ //   private static final String KEY_CAMERA_POSITION = "camera_position";
+   // private static final String KEY_LOCATION = "location";
 
     /**
      * Tracks the status of the location updates request.
@@ -160,10 +160,7 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState);
 
         // Retrieve location and camera position from saved instance state.
-        if (savedInstanceState != null) {
-            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
-        }
+
 
         // Construct a FusedLocationProviderClient.
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
@@ -314,10 +311,8 @@ public class MFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         if (mMap != null) {
-            outState.putParcelable(KEY_CAMERA_POSITION, mMap.getCameraPosition());
-            outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
+
             //outState.putBoolean(KEY_REQUESTING_LOCATION_UPDATES, mRequestingLocationUpdates);
-            outState.putParcelable(KEY_LOCATION, mCurrentLocation);
             super.onSaveInstanceState(outState);
         }
     }

@@ -1,3 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="@drawable/bg">
+
+   <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:text="Preview"
+    android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnCapturePicture"
+        android:visibility="gone" />
+
+
+    <Button
+        android:id="@+id/btnCapturePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/getLocationBtn"
+        android:layout_alignEnd="@+id/storageBtn"
+        android:layout_alignRight="@+id/storageBtn"
+        android:layout_marginBottom="37dp"
+        android:text="Take a Picture" />
+
+    <Button
+        android:id="@+id/getLocationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="Get Current Location" />
+
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getLocationBtn" />
+
+    <Button
+        android:id="@+id/storageBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/getLocationBtn"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginTop="77dp"
+        android:text="Upload Image" />
+
+    <TextView
+        android:id="@+id/storageText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/storageBtn" />
+
+</RelativeLayout>
+<!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -10,18 +77,19 @@
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical" >
-
+        android:gravity="left"
+        android:orientation="vertical"
+        android:id="@+id/relativeLayout">
+-->
         <!-- Capture picture button -->
-        <Button
+   <!--     <Button
             android:id="@+id/btnCapturePicture"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Take a Picture"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="Take a Picture" />
 
-
+-->
         <!-- Record video button -->
         <!--
         <Button
@@ -30,7 +98,7 @@
             android:layout_height="wrap_content"
             android:text="Record a Video" />
             -->
-    </LinearLayout>
+        <!--</LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -38,21 +106,23 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:padding="10dp">
-
+-->
+      <!--
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Preview"
             android:padding="10dp"
-            android:textSize="15dp"/>
-
+            android:text="Preview"
+            android:textSize="15dp" />
+-->
         <!-- To display picture taken -->
+<!--
         <ImageView
             android:id="@+id/imgPreview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone" />
-
+-->
         <!-- To preview video recorded -->
         <!--
         <VideoView
@@ -61,7 +131,7 @@
             android:layout_height="400dp"
             android:visibility="gone" />-->
 
-    </LinearLayout>
+        <!-- </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -69,39 +139,51 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
+-->
 
-        <Button
-            android:id="@+id/getLocationBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get Current Location"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+  <!--      <TextView
             android:id="@+id/locationText"
-            android:layout_below="@id/getLocationBtn"/>
-
-    </LinearLayout>
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/getLocationBtn" />
+-->
+        <!--  </LinearLayout>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
+-->
 
-        <Button
+     <!--   <Button
             android:id="@+id/storageBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload Image"/>
+            android:text="Upload Image" />
 
         <TextView
+            android:id="@+id/storageText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/storageText"
-            android:layout_below="@id/storageBtn"/>
+            android:layout_below="@id/storageBtn" />
+-->
+        <!--   </LinearLayout>-->
 
-    </LinearLayout>
+ <!--   </LinearLayout>
 
+    <Button
+        android:id="@+id/getLocationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="196dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:text="Get Current Location" />
 </LinearLayout>
+-->
+
+
