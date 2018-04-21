@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.roadin.ReportFragment">
+    tools:context="com.example.roadin.ReportFragment"
+    android:background="@drawable/bg">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -18,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Latitude"
+            android:textColor="@color/white"
             android:textSize="16dp"/>
     <TextView
         android:id="@+id/latitude_text"
@@ -28,12 +30,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textIsSelectable="true"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Longitude"
+            android:textColor="@color/white"
             android:textSize="16dp"/>
 
     <TextView
@@ -44,12 +48,14 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textIsSelectable="true"
+        android:textColor="@color/white"
         android:textSize="16dp" />
         <EditText
             android:id="@+id/desc1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
+            android:textColorHint="@color/white"
             android:hint="Place Name"/>
 
         <EditText
@@ -57,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Description"
+            android:textColorHint="@color/white"
             android:layout_marginBottom="12dp"/>
 
         <Button

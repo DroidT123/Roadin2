@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.roadin.CameraFragment">
+    tools:context="com.example.roadin.CameraFragment"
+    android:background="@drawable/bg">
 
     <!--TextView and Button displayed in Simple Fragment -->
 
@@ -13,9 +14,9 @@
         android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@color/colorAccent"
+        android:background="@color/white"
         android:text="Upload "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
 
